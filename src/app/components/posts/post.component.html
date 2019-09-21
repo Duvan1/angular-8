@@ -1,0 +1,22 @@
+<div class="container-fluid ">
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+    <div class="center-block">
+    <form (ngSubmit)="guardar()" #forma="ngForm">
+      <fieldset>
+        <legend>Agregar post</legend>
+        <div class="form-group">
+          <label for="nombrePost">Nombre del post</label>
+          <input type="text" class="form-control" id="title" aria-describedby="post name" placeholder="Ingrese el nombre de su post" name="title" [(ngModel)]="blog.title" required>
+        </div>
+        <div class="form-group">
+          <label for="bodyPost">Cuerpo del post</label>
+          <textarea class="form-control" id="body" placeholder="body" name="body" [(ngModel)]="blog.body" required>        
+          </textarea> 
+        </div>
+        <button [disabled]="!forma.valid" type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+</div>

@@ -1,0 +1,31 @@
+<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+<div class="row">
+	<div class="col-xs-12 col-md-8" *ngIf="!posts">
+		<div class="progress">
+			<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-8" *ngIf="posts">
+		<button [routerLink]="['/post','nuevo']" class="btn btn-default">agregar</button>
+		<br>
+		<table class="table " >
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">title</th>
+					<th scope="col">acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table-active" *ngFor="let post of posts">
+					<th scope="row">{{post.id}}</th>
+					<td>{{post.title}}</td>
+					<td>
+						<button class="btn btn-default" [routerLink]="['/post',post.id]">acutualizar</button>  
+						<button class="btn btn-danger" (click)="borrarPost(post.id)">borrar</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>

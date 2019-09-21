@@ -1,0 +1,54 @@
+<div class="container">
+	<div class="row" *ngIf="!departamentos">
+		<div class="col-md-12">
+			<div class="progress" >
+				<h1 class="text-center">Cargando</h1>
+				<div class="progress-bar" role="progressbar" aria-valuenow="70"
+				aria-valuemin="0" aria-valuemax="100" style="width:70%">
+				<span class="sr-only">70% Complete</span>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row" *ngIf="departamentos">
+	<div class="col-md-6">
+
+		<table class="table " >
+			<thead>
+				<tr>
+					<th scope="col">Area</th>
+					<th scope="col">Descripción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table-active" *ngFor="let dep of departamentos; let i = index" (click)="obtenerDetalles(dep.name)">
+					<th scope="row"> {{dep.name}}</th>
+					<td> {{dep.departament}} </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-6">
+		<div *ngIf="detalles.nombre">
+			<h1>Detalles del área</h1>
+			<div *ngIf="!sinDetalles">
+				<strong>Nombre:</strong><p>{{detalles.nombre}}</p>
+				<strong>Departamento:</strong><p>{{detalles.departamento}}</p>
+				<strong>Detalles:</strong>
+				<ul class="list-group">
+					<li class="list-group-item"><strong>Ciudad:</strong><p>{{detalles.detalles[0].town}}</p></li>
+					<li class="list-group-item"><strong>Jefe:</strong><p>{{detalles.detalles[0].boss}}</p></li>
+					<li class="list-group-item"><strong>Edad:</strong><p>{{detalles.detalles[0].age}}</p></li>
+					<li class="list-group-item"><strong>Ultimo grado:</strong><p>{{detalles.detalles[0].last_degree}}</p></li>
+				</ul>
+			</div>
+			<div *ngIf="sinDetalles">
+				{{sinDetalles}}
+			</div>
+			
+		</div>
+	</div>
+</div>
+</div>
